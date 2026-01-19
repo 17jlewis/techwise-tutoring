@@ -24,10 +24,7 @@
     }
 
     *{box-sizing:border-box}
-    html{
-      scroll-behavior:smooth;
-      scroll-padding-top: 90px; /* fixes sticky header hiding section titles */
-    }
+    html{scroll-behavior:smooth;}
     body{
       margin:0;
       font-family:"Inter",Arial,Helvetica,sans-serif;
@@ -40,53 +37,6 @@
 
     .container{max-width:980px;margin:0 auto;padding:0 18px}
 
-    /* Navigation */
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:20;
-      background:rgba(246,249,252,.85);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--border);
-    }
-    .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:800;
-      letter-spacing:-.02em;
-      white-space:nowrap;
-    }
-    .logo{
-      width:34px;
-      height:34px;
-      border-radius:10px;
-      background:linear-gradient(135deg,var(--primary),#22c55e);
-      box-shadow:var(--shadow);
-      flex:0 0 auto;
-    }
-    .links{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .links a{
-      text-decoration:none;
-      color:var(--muted);
-      font-weight:600;
-      padding:6px 8px;
-      border-radius:10px;
-    }
-    .links a:hover{color:var(--text); background: rgba(37,99,235,.08);}
-
     /* Cards */
     .card{
       background:var(--card);
@@ -96,8 +46,26 @@
       padding:22px;
     }
 
+    /* Simple brand row (no menu) */
+    .brand-row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:-.02em;
+      margin-bottom: 14px;
+    }
+    .logo{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--primary),#22c55e);
+      box-shadow:var(--shadow);
+      flex:0 0 auto;
+    }
+
     /* Hero */
-    header.hero{padding:54px 0 18px}
+    header.hero{padding:40px 0 18px} /* reduced since menu removed */
     .hero-grid{
       display:grid;
       grid-template-columns:1.25fr .75fr;
@@ -153,7 +121,7 @@
     .btn-primary:hover{background:var(--primaryDark)}
     .btn:hover{transform:translateY(-1px);transition:120ms ease}
 
-    main{padding-bottom: 10px;}
+    main{padding-bottom:10px;}
     section{padding:14px 0}
     h2{margin:0 0 10px;font-size:1.6rem;letter-spacing:-.02em}
     h3{margin:12px 0 6px;font-size:1.1rem}
@@ -178,63 +146,53 @@
 
 <body>
 
-  <div class="nav">
-    <div class="container nav-inner">
-      <div class="brand">
+  <header class="hero">
+    <div class="container">
+      <div class="brand-row">
         <div class="logo" aria-hidden="true"></div>
         <div>TechWise Tutoring</div>
       </div>
-      <div class="links" aria-label="Site navigation">
-        <a href="#top">Home</a>
-        <a href="#sessions">How Sessions Work</a>
-        <a href="#services">Services Offered</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">Frequently Asked Questions</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </div>
 
-  <header id="top" class="hero">
-    <div class="container hero-grid">
-      <div class="card">
-        <h1>Phonics-based reading and smart technology support for young learners</h1>
-        <p class="subhead">
-          Personalized tutoring for PreK–5 students with a strong focus on phonics-based reading instruction
-          and age-appropriate technology skills, led by a certified educator and children’s librarian.
-        </p>
+      <div class="hero-grid">
+        <div class="card">
+          <h1>Phonics-based reading and smart technology support for young learners</h1>
+          <p class="subhead">
+            Personalized tutoring for PreK–5 students with a strong focus on phonics-based reading instruction
+            and age-appropriate technology skills, led by a certified educator and children’s librarian.
+          </p>
 
-        <div class="pill-row">
-          <span class="pill">Phonics and decoding</span>
-          <span class="pill">Reading confidence</span>
-          <span class="pill">Math support</span>
-          <span class="pill">Digital skills</span>
-          <span class="pill">Calm, supportive sessions</span>
+          <div class="pill-row">
+            <span class="pill">Phonics and decoding</span>
+            <span class="pill">Reading confidence</span>
+            <span class="pill">Math support</span>
+            <span class="pill">Digital skills</span>
+            <span class="pill">Calm, supportive sessions</span>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://forms.gle/qaTGyL9cuFETo4EY7" target="_blank" rel="noopener">
+              Request a Free Consultation
+            </a>
+            <a class="btn" href="mailto:17jlewis@gmail.com?subject=TechWise%20Tutoring%20Inquiry">
+              Email Mr. Lewis
+            </a>
+          </div>
+
+          <p class="small" style="margin-top:12px;">
+            Free 20-minute introductory session available for new families.
+          </p>
         </div>
 
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://forms.gle/qaTGyL9cuFETo4EY7" target="_blank" rel="noopener">
-            Request a Free Consultation
-          </a>
-          <a class="btn" href="mailto:17jlewis@gmail.com?subject=TechWise%20Tutoring%20Inquiry">
-            Email Mr. Lewis
-          </a>
+        <div class="card">
+          <h2>Why Families Choose TechWise Tutoring</h2>
+          <ul>
+            <li>Certified educator and children’s librarian</li>
+            <li>Phonics-based reading instruction</li>
+            <li>Intentional, age-appropriate technology use</li>
+            <li>Calm and supportive learning environment</li>
+            <li>Personalized one-on-one tutoring</li>
+          </ul>
         </div>
-
-        <p class="small" style="margin-top:12px;">
-          Free 20-minute introductory session available for new families.
-        </p>
-      </div>
-
-      <div class="card">
-        <h2>Why Families Choose TechWise Tutoring</h2>
-        <ul>
-          <li>Certified educator and children’s librarian</li>
-          <li>Phonics-based reading instruction</li>
-          <li>Intentional, age-appropriate technology use</li>
-          <li>Calm and supportive learning environment</li>
-          <li>Personalized one-on-one tutoring</li>
-        </ul>
       </div>
     </div>
   </header>
