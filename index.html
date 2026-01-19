@@ -4,152 +4,340 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TechWise Tutoring</title>
+  <meta name="description" content="Phonics-based reading and technology tutoring for PreK–5 students. Certified educator and former 4th grade teacher." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      background-color: #eef4f8;
-      color: #1f2933;
-      line-height: 1.6;
+    :root{
+      --bg:#f6f9fc;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:rgba(15,23,42,.12);
+      --shadow:0 10px 25px rgba(15,23,42,.08);
+      --primary:#2563eb;
+      --primaryDark:#1d4ed8;
+      --softBlue:#e7f0ff;
     }
-    header {
-      background-color: #d9e8f3;
-      padding: 40px 20px;
-      text-align: center;
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Inter",Arial,Helvetica,sans-serif;
+      background:
+        radial-gradient(1200px 500px at 20% -10%, var(--softBlue), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
     }
-    header h1 {
-      margin-bottom: 10px;
-      font-size: 2.4rem;
+
+    .container{max-width:980px;margin:0 auto;padding:0 18px}
+
+    /* Navigation */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(246,249,252,.8);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border);
     }
-    header p {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1rem;
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
     }
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:-.02em;
     }
-    h2 {
-      margin-top: 40px;
-      border-bottom: 2px solid #c3d9ec;
-      padding-bottom: 8px;
+    .logo{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--primary),#22c55e);
+      box-shadow:var(--shadow);
     }
-    ul {
-      margin-left: 20px;
+    .links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
     }
-    .cta {
-      background-color: #c3d9ec;
-      padding: 30px 20px;
-      text-align: center;
-      margin-top: 60px;
+    .links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
     }
-    .cta a {
-      display: inline-block;
-      margin-top: 15px;
-      background-color: #2563eb;
-      color: white;
-      padding: 12px 20px;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
+    .links a:hover{color:var(--text)}
+
+    /* Cards */
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      padding:22px;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #555;
+
+    /* Hero */
+    .hero{padding:54px 0 18px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:16px;
     }
+    @media(max-width:860px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:clamp(30px,4vw,44px);
+      line-height:1.1;
+      letter-spacing:-.03em;
+    }
+    .subhead{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:1.05rem;
+    }
+
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px}
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.18);
+      font-size:.9rem;
+      font-weight:600;
+      color:var(--muted);
+    }
+
+    .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:700;
+      text-decoration:none;
+      border:1px solid var(--border);
+      color:var(--text);
+      background:#fff;
+    }
+    .btn-primary{
+      background:var(--primary);
+      color:#fff;
+      border-color:transparent;
+    }
+    .btn-primary:hover{background:var(--primaryDark)}
+    .btn:hover{transform:translateY(-1px);transition:120ms ease}
+
+    section{padding:14px 0}
+    h2{margin:0 0 10px;font-size:1.6rem}
+    h3{margin-top:0}
+    p{margin:10px 0;color:var(--muted)}
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media(max-width:860px){
+      .two-col{grid-template-columns:1fr}
+    }
+
+    ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    li{margin:8px 0}
+
+    footer{padding:30px 0 40px;color:var(--muted);font-size:.95rem}
+    .small{font-size:.95rem;color:var(--muted)}
   </style>
 </head>
+
 <body>
 
-<header>
-  <h1>TechWise Tutoring</h1>
-  <p>
-    Phonics-based reading and smart technology support for young learners.
-    Personalized tutoring for PreK–5 students focused on reading, academics,
-    and age-appropriate technology skills, taught by a certified educator and
-    former 4th grade teacher.
-  </p>
-</header>
-
-<section>
-  <h2>Why Families Choose TechWise Tutoring</h2>
-  <ul>
-    <li>Certified educator and former 4th grade teacher</li>
-    <li>Phonics-based reading instruction</li>
-    <li>Intentional, age-appropriate technology use</li>
-    <li>Calm and supportive learning environment</li>
-    <li>Personalized one-on-one tutoring</li>
-  </ul>
-</section>
-
-<section>
-  <h2>How Tutoring Sessions Work</h2>
-  <p>
-    Each session is structured but flexible, helping students stay engaged
-    without feeling pressured.
-  </p>
-  <ul>
-    <li>Warm welcome and clear goals</li>
-    <li>Targeted instruction in reading, math, or technology</li>
-    <li>Thoughtful technology integration when appropriate</li>
-    <li>Brief parent updates and practice suggestions</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Services Offered</h2>
-
-  <h3>PreK & Kindergarten Readiness</h3>
-  <p>Early literacy and school readiness support.</p>
-
-  <h3>Reading Support (K–5)</h3>
-  <p>Phonics-based instruction focused on confidence and skill development.</p>
-
-  <h3>Academic Support</h3>
-  <p>Math support, study skills, and homework help.</p>
-
-  <h3>Technology Skills for Kids</h3>
-  <p>Typing, device basics, internet safety, and introductory coding.</p>
-</section>
-
-<section>
-  <h2>Pricing</h2>
-  <ul>
-    <li>30-minute session: $30</li>
-    <li>60-minute session: $45</li>
-    <li>Free 20-minute introductory session for new families</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Frequently Asked Questions</h2>
-  <p>
-    TechWise Tutoring serves PreK–5 students and offers in-person and virtual
-    sessions. Technology and AI tools are optional, age-appropriate, and
-    guided. Sessions are calm, supportive, and confidence-building.
-  </p>
-</section>
-
-<div class="cta">
-  <h2>Ready to Get Started?</h2>
-  <p>
-    The first step is a free 20-minute introductory session.
-  </p>
-  <a href="https://docs.google.com/forms" target="_blank">
-    Request a Free Consultation
-  </a>
+<div class="nav">
+  <div class="container nav-inner">
+    <div class="brand">
+      <div class="logo"></div>
+      <div>TechWise Tutoring</div>
+    </div>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
 </div>
 
+<header class="hero">
+  <div class="container hero-grid">
+    <div class="card">
+      <h1>Phonics-based reading and smart technology support for young learners</h1>
+      <p class="subhead">
+        Personalized tutoring for PreK–5 students with a strong focus on phonics-based
+        reading instruction and age-appropriate technology skills, taught by a certified
+        educator and former 4th grade teacher.
+      </p>
+
+      <div class="pill-row">
+        <span class="pill">Phonics and decoding</span>
+        <span class="pill">Reading confidence</span>
+        <span class="pill">Math support</span>
+        <span class="pill">Digital skills</span>
+        <span class="pill">Calm, supportive sessions</span>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://forms.gle/qaTGyL9cuFETo4EY7" target="_blank" rel="noopener">
+          Request a Free Consultation
+        </a>
+        <a class="btn" href="mailto:17jlewis@gmail.com?subject=TechWise%20Tutoring%20Inquiry">
+          Email Joey
+        </a>
+      </div>
+
+      <p class="small" style="margin-top:12px;">
+        Free 20-minute introductory session available for new families.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Why Families Choose TechWise Tutoring</h2>
+      <ul>
+        <li>Certified educator and former 4th grade teacher</li>
+        <li>Phonics-based reading instruction</li>
+        <li>Intentional, age-appropriate technology use</li>
+        <li>Calm and supportive learning environment</li>
+        <li>Personalized one-on-one tutoring</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<section id="services">
+  <div class="card">
+    <h2>Services Offered</h2>
+    <div class="two-col">
+      <div>
+        <h3>PreK and Kindergarten Readiness</h3>
+        <ul>
+          <li>Letter names and sounds</li>
+          <li>Early phonics and phonological awareness</li>
+          <li>Early writing and fine motor skills</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Reading Support (K–5)</h3>
+        <ul>
+          <li>Phonics and decoding strategies</li>
+          <li>Fluency and comprehension</li>
+          <li>Vocabulary development</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Academic Support</h3>
+        <ul>
+          <li>Math support</li>
+          <li>Study skills and organization</li>
+          <li>Homework help</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Technology Skills for Kids</h3>
+        <ul>
+          <li>Typing and device basics</li>
+          <li>Google tools (Docs, Slides, Classroom)</li>
+          <li>Internet safety and digital citizenship</li>
+          <li>Intro coding (Scratch, Blockly, Code.org)</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">
+      Technology is used intentionally. Optional AI tools are guided, age-appropriate,
+      and never used as shortcuts.
+    </p>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="card">
+    <h2>Pricing</h2>
+    <ul>
+      <li><strong>30-minute session:</strong> $30</li>
+      <li><strong>60-minute session:</strong> $45</li>
+      <li><strong>Free 20-minute introductory session</strong> for new families</li>
+    </ul>
+    <p class="small">
+      Payment accepted via cash, Venmo, or Zelle. Payment is due at the time of service.
+      Please provide at least 24 hours’ notice for cancellations.
+    </p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="card">
+    <h2>Frequently Asked Questions</h2>
+    <p><strong>Do you work with PreK students?</strong><br>
+      Yes. Sessions are developmentally appropriate and focused on early literacy and phonics.</p>
+
+    <p><strong>Do you offer in-person and virtual tutoring?</strong><br>
+      Yes, both options are available.</p>
+
+    <p><strong>How is technology used?</strong><br>
+      Technology is used intentionally to support learning, not replace instruction.</p>
+
+    <p><strong>Do you use AI tools?</strong><br>
+      AI tools are optional, guided, and age-appropriate.</p>
+
+    <p><strong>What if my child struggles with focus?</strong><br>
+      Sessions are calm, structured, and encouraging.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="card">
+    <h2>Contact</h2>
+    <p>
+      Ready to get started? The first step is a free 20-minute introductory session.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://forms.gle/qaTGyL9cuFETo4EY7" target="_blank" rel="noopener">
+        Request a Free Consultation
+      </a>
+      <a class="btn" href="mailto:17jlewis@gmail.com?subject=TechWise%20Tutoring%20Inquiry">
+        Email Joey
+      </a>
+    </div>
+    <p class="small" style="margin-top:14px;">
+      TechWise Tutoring is an independent, educator-led service. Every child is supported
+      with care, patience, and instruction tailored to their individual needs.
+    </p>
+  </div>
+</section>
+
 <footer>
-  <p>
-    TechWise Tutoring is an independent, educator-led service. Every child is
-    supported with care, patience, and instruction tailored to their needs.
-  </p>
+  <div class="small">© <span id="year"></span> TechWise Tutoring</div>
 </footer>
+
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
