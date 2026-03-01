@@ -51,7 +51,7 @@
 
     /* Accordion / Collapsible Sections */
     details.accordion {
-      padding: 0; /* Remove default padding, shift to summary/content */
+      padding: 0; 
     }
     details.accordion summary {
       padding: 24px 30px;
@@ -65,7 +65,7 @@
       transition: background 0.2s ease;
     }
     details.accordion summary::-webkit-details-marker {
-      display: none; /* Hides default arrow */
+      display: none; 
     }
     details.accordion summary h2 {
       margin: 0;
@@ -79,7 +79,7 @@
       font-weight: 400;
     }
     details.accordion[open] summary::after {
-      content: '−'; /* Minus sign when open */
+      content: '−'; 
     }
     .accordion-content {
       padding: 0 30px 30px 30px;
@@ -106,13 +106,14 @@
       margin-bottom: 24px;
       padding-top: 20px;
     }
+    
+    /* UPDATED LOGO CSS */
     .logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      box-shadow: 0 4px 6px rgba(2, 132, 199, 0.2);
+      width: 55px; 
+      height: 55px;
+      border-radius: 8px;
       flex: 0 0 auto;
+      object-fit: cover;
     }
 
     /* Hero Layout */
@@ -207,7 +208,7 @@
   <header class="hero">
     <div class="container">
       <div class="brand-row">
-        <div class="logo" aria-hidden="true"></div>
+        <img src="TechWise Logo.png" alt="TechWise Tutoring Logo" class="logo">
         <div>TechWise Tutoring</div>
       </div>
 
