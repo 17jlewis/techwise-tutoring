@@ -11,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* UPDATED VISUAL STRATEGY: Calming, professional color palette */
     :root {
       --bg: #f8fafc; 
       --card: #ffffff;
@@ -19,9 +18,9 @@
       --muted: #64748b;
       --border: #e2e8f0;
       --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.01);
-      --primary: #0284c7; /* Trustworthy Ocean Blue */
+      --primary: #0284c7; 
       --primaryDark: #0369a1;
-      --accent: #10b981; /* Supportive Warm Green */
+      --accent: #10b981; 
       --softBlue: #e0f2fe;
     }
 
@@ -29,7 +28,6 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      /* Switched to Nunito - a very friendly, accessible, yet professional font */
       font-family: "Nunito", Arial, Helvetica, sans-serif; 
       background: radial-gradient(1000px 600px at top center, var(--softBlue), transparent 80%), var(--bg);
       color: var(--text);
@@ -38,7 +36,7 @@
 
     .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-    /* Polished Cards */
+    /* Standard Cards */
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -47,8 +45,53 @@
       padding: 30px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .card:hover {
+    .card:not(.accordion):hover {
       box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Accordion / Collapsible Sections */
+    details.accordion {
+      padding: 0; /* Remove default padding, shift to summary/content */
+    }
+    details.accordion summary {
+      padding: 24px 30px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      outline: none;
+      transition: background 0.2s ease;
+    }
+    details.accordion summary::-webkit-details-marker {
+      display: none; /* Hides default arrow */
+    }
+    details.accordion summary h2 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+    details.accordion summary::after {
+      content: '+';
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--primary);
+      font-weight: 400;
+    }
+    details.accordion[open] summary::after {
+      content: '−'; /* Minus sign when open */
+    }
+    .accordion-content {
+      padding: 0 30px 30px 30px;
+      border-top: 1px solid var(--border);
+      margin-top: 10px;
+      padding-top: 20px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Brand Header */
@@ -133,7 +176,7 @@
     .btn:hover { border-color: var(--primary); color: var(--primary); }
 
     main { padding-bottom: 40px; }
-    section { padding: 20px 0; }
+    section { padding: 12px 0; }
     h2 { margin: 0 0 16px; font-size: 1.8rem; color: var(--primaryDark); letter-spacing: -0.02em; }
     h3 { margin: 16px 0 8px; font-size: 1.2rem; color: var(--primary); }
     p { margin: 12px 0; color: var(--muted); }
@@ -214,89 +257,120 @@
   <main class="container">
 
     <section id="sessions">
-      <div class="card">
-        <h2>How Tutoring Sessions Work</h2>
-        <p>Each session is structured but flexible, allowing students to stay engaged without feeling pressured.</p>
-        <div class="two-col">
-          <ul>
-            <li><strong>Warm welcome and goal setting</strong> so your child knows what to expect</li>
-            <li><strong>Skill-focused instruction</strong> in phonics, reading, math, or technology using guided practice</li>
-          </ul>
-          <ul>
-             <li><strong>Thoughtful technology integration</strong> when appropriate to reinforce learning</li>
-            <li><strong>Wrap-up and parent communication</strong> with a brief summary and simple practice suggestions</li>
-          </ul>
+      <details class="card accordion" open>
+        <summary><h2>How Tutoring Sessions Work</h2></summary>
+        <div class="accordion-content">
+          <p>Each session is structured but flexible, allowing students to stay engaged without feeling pressured.</p>
+          <div class="two-col">
+            <ul>
+              <li><strong>Warm welcome and goal setting</strong> so your child knows what to expect</li>
+              <li><strong>Skill-focused instruction</strong> in phonics, reading, math, or technology using guided practice</li>
+            </ul>
+            <ul>
+               <li><strong>Thoughtful technology integration</strong> when appropriate to reinforce learning</li>
+              <li><strong>Wrap-up and parent communication</strong> with a brief summary and simple practice suggestions</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </details>
     </section>
 
     <section id="services">
-      <div class="card">
-        <h2>Services Offered</h2>
-        <div class="two-col">
-          <div class="service-box">
-            <h3>PreK & Kindergarten Readiness</h3>
-            <p>Early literacy and school readiness support.</p>
-            <ul>
-              <li>Letter names and sounds</li>
-              <li>Early phonics and phonological awareness</li>
-              <li>Early writing and fine motor skills</li>
-              <li>Listening, attention, and learning routines</li>
-            </ul>
+      <details class="card accordion">
+        <summary><h2>Services Offered</h2></summary>
+        <div class="accordion-content">
+          <div class="two-col">
+            <div class="service-box">
+              <h3>PreK & Kindergarten Readiness</h3>
+              <p>Early literacy and school readiness support.</p>
+              <ul>
+                <li>Letter names and sounds</li>
+                <li>Early phonics and phonological awareness</li>
+                <li>Early writing and fine motor skills</li>
+                <li>Listening, attention, and learning routines</li>
+              </ul>
+            </div>
+
+            <div class="service-box">
+              <h3>Reading Support (K–5)</h3>
+              <p>Phonics-based instruction focused on confidence and skill development.</p>
+              <ul>
+                <li>Phonics and decoding strategies</li>
+                <li>Fluency and comprehension</li>
+                <li>Vocabulary development</li>
+                <li>Support for struggling or reluctant readers</li>
+              </ul>
+            </div>
+
+            <div class="service-box">
+              <h3>Academic Support</h3>
+              <p>Targeted support to help students stay on track.</p>
+              <ul>
+                <li>Math support</li>
+                <li>Study skills and organization</li>
+                <li>Homework help</li>
+                <li>Age-appropriate test prep strategies</li>
+              </ul>
+            </div>
+
+            <div class="service-box">
+              <h3>Technology Skills for Kids</h3>
+              <p>Practical digital skills that support school success and responsible technology use.</p>
+              <ul>
+                <li>Typing and device basics (Chromebook and iPad)</li>
+                <li>Google tools (Docs, Slides, Classroom)</li>
+                <li>Internet safety and digital citizenship</li>
+                <li>Intro coding (Scratch, Blockly, Code.org)</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="service-box">
-            <h3>Reading Support (K–5)</h3>
-            <p>Phonics-based instruction focused on confidence and skill development.</p>
-            <ul>
-              <li>Phonics and decoding strategies</li>
-              <li>Fluency and comprehension</li>
-              <li>Vocabulary development</li>
-              <li>Support for struggling or reluctant readers</li>
-            </ul>
-          </div>
-
-          <div class="service-box">
-            <h3>Academic Support</h3>
-            <p>Targeted support to help students stay on track.</p>
-            <ul>
-              <li>Math support</li>
-              <li>Study skills and organization</li>
-              <li>Homework help</li>
-              <li>Age-appropriate test prep strategies</li>
-            </ul>
-          </div>
-
-          <div class="service-box">
-            <h3>Technology Skills for Kids</h3>
-            <p>Practical digital skills that support school success and responsible technology use.</p>
-            <ul>
-              <li>Typing and device basics (Chromebook and iPad)</li>
-              <li>Google tools (Docs, Slides, Classroom)</li>
-              <li>Internet safety and digital citizenship</li>
-              <li>Intro coding (Scratch, Blockly, Code.org)</li>
-            </ul>
-          </div>
+          <p class="small" style="margin-top:20px; text-align:center;">
+            <em>Technology is used intentionally to support learning. Optional AI tools are guided, age-appropriate, and never used as shortcuts.</em>
+          </p>
         </div>
-
-        <p class="small" style="margin-top:20px; text-align:center;">
-          <em>Technology is used intentionally to support learning. Optional AI tools are guided, age-appropriate, and never used as shortcuts.</em>
-        </p>
-      </div>
+      </details>
     </section>
 
     <section id="pricing">
-      <div class="card">
-        <h2>Pricing</h2>
-        <ul>
-          <li><strong>30-minute session:</strong> $30</li>
-          <li><strong>60-minute session:</strong> $45</li>
-        </ul>
-        <p class="small" style="margin-top: 16px;">
-          Payment accepted via cash, Venmo, or Zelle. Payment is due at the time of service.
-          Please provide at least 24 hours’ notice for cancellations.
-        </p>
-      </div>
+      <details class="card accordion">
+        <summary><h2>Pricing</h2></summary>
+        <div class="accordion-content">
+          <ul>
+            <li><strong>30-minute session:</strong> $30</li>
+            <li><strong>60-minute session:</strong> $45</li>
+          </ul>
+          <p class="small" style="margin-top: 16px;">
+            Payment accepted via cash, Venmo, or Zelle. Payment is due at the time of service.
+            Please provide at least 24 hours’ notice for cancellations.
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <section id="faq">
+      <details class="card accordion">
+        <summary><h2>Frequently Asked Questions</h2></summary>
+        <div class="accordion-content">
+          <p><strong>Do you work with PreK students?</strong><br>
+            Yes. Sessions are developmentally appropriate and focused on early literacy and phonics.</p>
+
+          <p><strong>Do you offer in-person and virtual tutoring?</strong><br>
+            Yes, both options are available.</p>
+
+          <p><strong>How is technology used during sessions?</strong><br>
+            Technology is used intentionally to support learning and build digital skills, not as a distraction.</p>
+
+          <p><strong>Do you use AI tools with students?</strong><br>
+            AI tools are optional. When used, they are guided, age-appropriate, and focused on skill-building rather than shortcuts.</p>
+
+          <p><strong>What if my child struggles with focus or confidence?</strong><br>
+            Sessions are calm, structured, and encouraging with a focus on steady progress.</p>
+
+          <p><strong>How do we get started?</strong><br>
+            Request a free consultation to schedule a free 20-minute introductory session. There is no obligation to continue after the intro session.</p>
+        </div>
+      </details>
     </section>
 
     <section id="contact">
